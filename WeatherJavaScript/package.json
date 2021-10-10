@@ -1,0 +1,6 @@
+{
+  "name": "async-await-weather",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}

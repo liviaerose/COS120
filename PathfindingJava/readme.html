@@ -1,0 +1,309 @@
+<meta charset="utf-8" lang="en">  <!-- this line allows UTF-8 characters in the .html file -->
+
+                    **P04_PathFinding**
+
+
+<!--
+
+General
+========
+
+For each of your team's implementations, explain the following (where appropriate and applicable):
+
+- details on calling conventions, input and output data formats, limitations, bugs, and special features.
+- negative aspects of your program (limitations, known bugs)
+- positive aspects (extensions, special features)
+- describe your choice of modularization (abstractions), data structures, and algorithms
+- explain anything you did that is likely to be different from what other students may have done
+- justify any design decisions for which the rationale isn't immediately clear
+
+Feel free to modify the structure of this `readme.html` file to fit the current assignment and to fit how you wish to present your findings.
+
+
+!!! note: Math Typesetting
+    Surround your math with double dollar signs to have [MathJax](https://www.mathjax.org/) typeset it beautifully.
+    To add a tilde in math mode (using dollar signs), use the `\sim` command.
+    If an exponent has more than one character, you must surround it with curly braces.
+    In the example below, the exponent for $T$ must use curly braces, but they aren't required for $N$.
+
+    $$ \sim T^{1.2} N^2 $$
+
+    Note: Typesetting like this is optional; feel free to use plain text if you'd like.
+
+
+Submission
+-----------
+
+Use the CSE LogHistory Plug-in to create a zip file containing all your code, this `readme.html` document, and any additional files of evidence (ex: screenshots).
+If you create a zip by other means, it will include all the files under `tests` and might miss some important files (ex: `.log/history.log`).
+The former will make for a very large zip file; the latter will cause you to lose points.
+
+
+-->
+
+
+
+Author
+=============
+
+
+<!-- fill out the following table with your information -->
+<!-- Note: wrapping table in div.noheader will hide the table's header -->
+<!-- Note: wrapping table in div.firstcol will style the first column different from other columns -->
+<div class="noheader firstcol">
+                  |             
+------------------|-------------
+name              | Livia Rose
+computer + OS     | MacOS Catalina
+time to complete  | approx. 18 hours
+partner           | Heather Bologna, Jolie Rabideau
+additional help   | Dr. Denning
+</div>
+
+
+
+Assignment Details
+===================
+
+
+`Pathfinding` Implementation
+---------------------------
+Inside the Pathfinder class we created private variables PFNode Map, int N,
+numLocations, float heuristic, coord startLocation, and coord endLocaiton. PFNode Map
+holds each of the locations we have gone in a given game, int N holds the size of the
+map, numLocations holds the number of locations we have gone in a given gave, float
+heuristic holds the search heuristic, and coord startLocation and endLocation hold
+the starting and ending points for each game. PFNode creates a variable that holds
+the current location and links it back to previous locations. CompareTo compares
+finds the minimum costs among location choices. GetCost returns the cost of a location.
+IsUsed returns if the PFNode has been used to make the path. Use holds the ability to use
+a node to make the path. Neighbors checks each of the surrounding locations from current
+location. SetPathStart creates a random start point and SetPathEnd creates a random end
+point for each game. GetPathStart returns the startLocation and getPathEnd returns
+endLocation. SetHeuristic establishes the search heuristic and getHeuristic returns the
+heuristic value. ResetPath clears all of the path information that is not the correct path.
+ComputePath takes in the locations, compares the values of each location to find the smallest cost,
+uses the location, and adds the location to a stack. FoundPath returns the stack created
+in computePath. GetPathCost returns the cost found in computePath. GetSearchSize returns
+numLocations. GetPathSolution is the implementation that sends the correct path to the visualizer.
+WasSearched checks for edge cases for checking the same location twice.We first got all of the locations set up, then we began coding the computePath.
+<!--
+Explain briefly how you implemented the Pathfinding data type.
+What did you work on first?
+What did you work on next?
+-->
+
+
+
+`PFNode` Implementation
+------------------------
+
+We implemented the PFNode as a double array to establish a map like quality.
+The PFNode would act as a coordinate for each location on the terrain. Due to the
+map like structure, we were able to create first and last inside PFNode to hold
+the startLocation and endLocation. Then using PFNode we were able to control the
+location, compareTo, and computePath.
+<!--
+Briefly explain how you represented the search node PFNode.
+-->
+
+`Walker` Implementation
+------------------------
+
+<!--
+Explain briefly how you implemented the Walker data type.
+-->
+First we created private variables terrain, and iterables path and tempPath.
+Inside Walker we instantiated the path, tempPath, and terrain variables in the constructor.
+In getLocation() we set the Coord variable current to the next value of tempPath. Therefore allowing
+for backtracking if necessary. Then we set tempPath to equals the real path and incremented.
+Then we returned current which holds the .next value found above.
+The doneWalking() method checks if there is a next value in the path. If there is a next value the
+walking has not finish therefore it returns false. If the walking is finished--there is no next value--we
+returned true.The advance() method uses the iterator() and next() to increment through the path.
+
+
+
+Analysis
+===========
+
+
+Correctness
+------------
+
+<!--
+How did you test the correctness of your algorithm?
+-->
+We used Dr. Denning's tester code provided to test our code, as well as, our own machines to
+test each maze provided.
+
+Runtime Analysis
+-----------------
+
+<!--
+For each of the following maps and given the default starting and ending locations, give the estimated
+travel cost ($\text{cost}_0(E)$) and search size for different heuristic values ($h$).
+-->
+
+map      | h   |          cost          | search
+---------|-----|------------------------|--------
+maze32_0 |   0 |   275                  | 975(93%)
+maze32_0 |   1 |   275                  | 875(85%)
+maze32_0 |   2 |   275                  | 795(75%)
+maze32_0 | 128 |   275                  | 752(73%)
+maze32_1 |   0 |   78                   | 943(91%)
+maze32_1 |  16 |   78                   | 534(52%)
+usa128   |   0 |   1.856E7              | 9452(55%)
+usa256   |   0 |   2.012E7              | 50145(67%)
+usa1024  |   0 |   1.643E7              | 526124(52%)
+
+As shown in the table above, it is obvious that amount of terrain searched has
+a negative relationship. As the cost increased the amount of terrain search decreases.
+The value 16 for h has the best relationship for cost to search ratio being that of
+the cost being the lowest value and the amount searched also being the lowest value.
+These are hypothetical values due to issues in our code.
+<!--
+
+Given the information above, do you notice any patterns?
+Is there a value of $h$ that seems to work best?
+-->
+
+
+Known bugs / limitations
+-------------------------
+The only limitation we still have in our code is finding the optimal path, which was a difficult issue we faced throughout the
+entire coding process. We ended up re-downloading the code to decipher the issues we were faced with; however, this did not solve
+all of our issues. Our code does not find the optimal path nor does it find a "correct" path; therefore, we have quite a few limitations and problems
+associated with our code.
+<!--
+What bugs or limitations were troublesome?
+What bugs or limitations still remain?
+Are these bugs or limitations a problem in your implementation, algorithm, or something else?
+How do you know that you did not miss a bug?
+What additional tests did you run to ensure that your implementations are correct?
+-->
+
+<!-- ... -->
+
+
+
+
+
+Reflection
+===========
+
+Consulting an expert, asking good questions, and developing subgoals-- are all critical thinking skills I applied to the Pathfinding problem.
+The expert in which my group called upon was Dr. Denning. Dr. Denning helped us work through an issue we faced in the Walker class: calling
+upon an iterable object when a coord is needed. During our time with Dr. Denning we not only consulted with an expert, but also asked good
+questions, questions that were clear, concise, and specific. My group and I also used the critical thinking skill many times throughout coding
+pathfinding. Before we began coding each time we met, we made subgoals that we wanted to complete for the day. These subgoals helped break
+up the coding time, instill confidence, and reduce anxiety. Overall, we used all five critical thinking skills throughout Pathfinding; however,
+consulting an expert, asking good questions, and developing subgoals are the most prevalent and highly implemented.
+<!--
+Did you use any of the CT Skills?
+If so, which ones did you use, and how did you use them?
+If not, explain what you did when you needed help.
+Or, did you not need help?
+
+- consulting an expert
+- asking good questions
+- edge cases
+- similar problems / fewer variables
+- developing subgoals
+-->
+
+My group and I made sure to progress through the assignment in increments working on subgoals and taking plenty of breaks to process the information.
+The brain is always working subconsciously even when it is not directly working on the task at hand; therefore, the brain will continue to work
+through the code during breaks. Therefore, when we came across a large problem we would all take turns problem solving while the others either
+took a break or worked on a different part of the code. We also made sure we did not spend more time than necessary on this assignment by setting
+aside times to work on the assignment when we received the assignment. However, this timeline did face challenges and changes do to family
+circumstances, one of which allow our group to receive an extension on the assignment.
+<!--
+What did you do to monitor your progress and make sure you did not spend more time than necessary on this assignment?
+-->
+
+Dr. Denning helped us with this assignment by explaining how the stack works for the Walker class. We were having issue changing the iterable
+location to a coord; however, as Dr. Denning explained with instead need to have an outside iterable function to progress through the stack;
+therefore, allowing access to the coord. Dr. Denning also advised us to break down our subgoals farther--making sure each class worked without
+issues before progressing onto the extra credit.
+
+<!--
+Describe whatever help (if any) that you received.
+Don't include readings, lectures, but do include any help from people (including course staff, lab TAs, classmates, and friends)  and attribute them by name.
+-->
+Heather Bologna and Jolie Rabideau were my partners on this assignment. Throughout the coding process we did a lot of partner coding where
+one person who be writing the code while the other two checked for errors or worked on problem solving. We consolidated and kept the updated
+versions of code on Jolie's computer; while, Heather and I each had our own versions where we would try different problem solving strategies.
+This set up allowed "back up" versions of code to be available in case of errors or issues in the problem solving code.
+<!--
+Since this is an individual assignment, if you worked with a partner, assert below that the work you are turning in is your own work, and that you only did "whiteboard" work as a group.
+Give one sentence explaining what each of you contributed.
+If you used the code from the lab challenge, explain what is shared between you and your lab partner.
+-->
+
+As I stated before, one of the serious problems we encountered was the issue concerning calling the location as an iterable rather than a coord.
+However, Dr. Denning was able to clear up this problem. Another problem we encountered was establishing the used nodes. We had trouble differentiating
+the isValid function and the isUsed function. Dr. Denning also cleared up this problem. The isValid function is mainly used in the extra credit
+part of the assignment, while the isUsed needed to be implemented in Pathfinder to find establish the path.
+<!--
+Describe any serious problems you encountered.
+-->
+
+
+<!--
+List any other comments here.
+Feel free to provide any feedback on how much you learned from doing the assignment, and whether you enjoyed doing it.
+-->
+
+
+
+
+
+
+<!--   Feel free to modify the following to fit a theme of your choosing   -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> <!-- a sans-serif font -->
+<style>  /* A TAYLOR-INSPIRED THEME */
+    body {font-family:'Open Sans',sans-serif;}
+    .md a:link, .md a:visited {color:hsl(252,23.0%,44.3%); font-family:'Open Sans',sans-serif;}
+    .md table.table th {background-color:hsl(252,23.0%,44.3%);}
+    .md .noheader th {display:none;}
+    .md .firstcol td:first-child {white-space:pre;color:white;vertical-align:top;font-weight:bold;border-color:black;background:hsl(252,23.0%,54.3%);}
+    .md .firstcol tr:nth-child(even) td:first-child {background:hsl(252,23.0%,44.3%);}
+    .md div.tilde { margin: 5px 0 20px; }
+</style>
+
+
+<!-- ****************************** -->
+<!--    Leave the content below     -->
+<!-- ****************************** -->
+
+<!-- The script and style below are added for clarity and to workaround a bug -->
+<script>
+    // this is a hack to workaround a bug in Markdeep+Mathjax, where
+    // `&#36;`` is automatically converted to `\(`` and `\)`` too soon.
+    // the following code will replace the innerHTML of all elements
+    // with class "dollar" with a dollar sign.
+    setTimeout(function() {
+        var dollars = document.getElementsByClassName('dollar');
+        for(var i = 0; i < dollars.length; i++) {
+            dollars[i].innerHTML = '&#' + '36;'; // split to prevent conversion to $
+        }
+    }, 1000);
+</script>
+<style>
+    /* adding some styling to <code> tags (but not <pre><code> coding blocks!) */
+    :not(pre) > code {
+        background-color: rgba(0,0,0,0.05);
+        outline: 1px solid rgba(0,0,0,0.15);
+        margin-left: 0.25em;
+        margin-right: 0.25em;
+    }
+    /* fixes table of contents of medium-length document from looking weird if admonitions are behind */
+    .md div.mediumTOC { background: white; }
+    .md div.admonition { position: initial !important; }
+</style>
+
+<!--   Leave the following Markdeep formatting code, as this will format your text above to look nice in a wed browser   -->
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+<script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible");</script>

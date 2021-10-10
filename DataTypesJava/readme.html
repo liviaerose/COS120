@@ -1,0 +1,382 @@
+<meta charset="utf-8" lang="en">  <!-- this line allows UTF-8 characters in the .html file -->
+
+                    **P02_DataTypes**
+
+
+<!--
+
+General
+========
+
+For each of your team's implementations, explain the following (where appropriate and applicable):
+
+- details on calling conventions, input and output data formats, limitations, bugs, and special features.
+- negative aspects of your program (limitations, known bugs)
+- positive aspects (extensions, special features)
+- describe your choice of modularization (abstractions), data structures, and algorithms
+- explain anything you did that is likely to be different from what other students may have done
+- justify any design decisions for which the rationale isn't immediately clear
+
+Feel free to modify the structure of this `readme.html` file to fit the current assignment and to fit how you wish to present your findings.
+
+
+!!! note: Math Typesetting
+    Surround your math with double dollar signs to have [MathJax](https://www.mathjax.org/) typeset it beautifully.
+    To add a tilde in math mode (using dollar signs), use the `\sim` command.
+    If an exponent has more than one character, you must surround it with curly braces.
+    In the example below, the exponent for $T$ must use curly braces, but they aren't required for $N$.
+
+    $$ \sim T^{1.2} N^2 $$
+
+    Note: Typesetting like this is optional; feel free to use plain text if you'd like.
+
+
+Submission
+-----------
+
+Use the CSE LogHistory Plug-in to create a zip file containing all your code, this `readme.html` document, and any additional files of evidence (ex: screenshots).
+If you create a zip by other means, it will include all the files under `tests` and might miss some important files (ex: `.log/history.log`).
+The former will make for a very large zip file; the latter will cause you to lose points.
+
+
+-->
+
+
+
+Author
+=============
+
+
+<!-- fill out the following table with your information -->
+<!-- Note: wrapping table in div.noheader will hide the table's header -->
+<!-- Note: wrapping table in div.firstcol will style the first column different from other columns -->
+<div class="noheader firstcol">
+                  |             
+------------------|-------------
+name              | Livia Rose<!-- ... -->
+computer + OS     | MacOS High Sierra <!-- ... -->
+time to complete  | 10-11 hours<!-- ... -->
+partner           | None<!-- ... -->
+additional help   | Dr. Denning <!-- ... -->
+</div>
+
+
+
+
+
+
+Implementations
+===================
+
+
+`Steque` Implementation
+--------------------------
+I created a Node class to keep track of the items in the stack and
+I created a counter to keep track of the size of the stack. Therefore,
+I was able to return N in the size() function and check if N is equal
+to zero in the isEmpty() function. For enqueue I created a new Node
+called last, so I could add an item to the end of the stack by setting
+last to the item and setting oldlast.next to last as well. In enqueue I
+also had to account for the edge case where the first enqueued item is
+equal to both the last and first item in the stack. This was easy to implement
+because I was able to set last equal to first. Push has the same idea
+as enqueue but we are adding items to the beginning of the stack using the name
+first. Pop can only be implemented if the stack is not empty, if the stack
+is empty a no such element exception is thrown. Otherwise I set the first
+item to first.next if there is more than one item left in the list, and if
+there is only one item left in the list I set the first equal to null. The iterator
+keeps track of next, first, current, and hasNext.
+
+I check my that my implementation was correct through a series of tests
+that enqueue and push on numbers, check to see if size is the same as the number
+of items in the stack, pop the numbers off, and then
+check to see if the size is zero.
+<!--
+Explain briefly how you implemented the `Steque.java` class.
+How did you check that your implementation was correct?
+Include code listings, screenshots, diagrams, etc. if helpful.
+-->
+
+
+`MinimumStack` Implementation
+------------------------------
+I created a Node class to keep track of the items in the stack and
+I created a counter to keep track of the size of the stack. Therefore,
+I was able to return N in the size() function and check if N is equal
+to zero in the isEmpty() function. I also created another stack to keep
+track of the succession of minimums as I add items onto the original stack.
+For push I created a new Node called first, so I could add an item to the start
+of the stack by setting first to the item and setting first to first.next
+as well. In push I also had to account for the edge case where the first pushed item is
+equal to both the last and first item in the stack. This was easy to implement
+because I was able to set last equal to first. Within push I also used the
+minimumStack to my advantage by creating an if tree that checks to see if
+minimumStack is empty or if items are already inside it. If the minimumStack is empty
+I push the item onto the minimumStack as well because the first item will
+always be the minimum. If there is already items inside minimumStack I used the
+compareTo() function to check if the new item is larger than the top item
+on minimumStack. I am able to check the top item using minimumStack.peek().
+If the new item is smaller the new item will be pushed onto the minimumStack.
+Pop can only be implemented if the stack is not empty, if the stack
+is empty a no such element exception is thrown. Otherwise I set the first
+item to first.next if there is more than one item left in the list, and if
+there is only one item left in the list I set the first equal to null. I also
+use minimumStack in pop as well. I checked to see if the item being popped off is
+equal to the top item on minimumStack. If the items are equal the top
+item on the minimumStack is also popped off. The iterator
+keeps track of next, first, current, and hasNext.
+
+I check my that my implementation was correct through a series of tests
+that push on numbers, check to see if size is the same as the number
+of items in the stack, check to see if the minimum is the correct minimum,
+pop one of the numbers off, checked the size and minimum again, and continued this
+push, check, pop loop for a series of different numbers.
+
+<!--
+Explain briefly how you implemented the `MinimumStack.java` class.
+How did you check that your implementation was correct?
+Include code listings, screenshots, diagrams, etc. if helpful.
+-->
+
+
+`OnePointerQueue` Implementation
+-----------------------------------
+I created a Node class to keep track of the items in the stack and
+I created a counter to keep track of the size of the stack. Therefore,
+I was able to return N in the size() function and check if N is equal
+to zero in the isEmpty() function. For enqueue I created a new Node
+called last, so I could add an item to the end of the stack by setting
+last to the item and setting oldlast.next to last as well. In enqueue I
+also had to account for the edge case where the first enqueued item is
+equal to both the last and first item in the stack. This was easy to implement
+because I was able to set last equal to first. Dequeue can only be implemented if the stack is not empty, if the stack
+is empty a no such element exception is thrown. Otherwise I set the first
+item to first.next if there is more than one item left in the list, and if
+there is only one item left in the list I set the first equal to null. The iterator
+keeps track of next, first, current, and hasNext.
+
+I check my that my implementation was correct through a series of tests
+that enqueued on numbers, check to see if size is the same as the number
+of items in the stack, dequeued the numbers off, and then
+check to see if the size is zero.
+<!--
+Explain briefly how you implemented the `OnePointerQueue.java` class.
+How did you check that your implementation was correct?
+Include code listings, screenshots, diagrams, etc. if helpful.
+-->
+
+
+
+Memory Analysis
+-----------------
+
+<!--
+How much memory (in bytes) do your data types use to store $N$ items in the worst case?
+Use the 64-bit memory cost model from section 1.4 of the textbook and use tilde notation to simplify your answer.
+Briefly justify your answers and show your work.
+
+Do not include the memory for the items themselves (as this memory is allocated by the client and depends on
+the item type) or for any iterators, but do include the memory for the references to the items
+(in the underlying array or linked list).
+
+Note: The `Stack` class (provided by the book's `algs4.jar`) implements the stack using a singly-linked list.
+So, your memory analysis of `MinimumStack` should take this into account.
+-->
+
+Steque: ~40N + 40
+
+object overhead    |   16 bytes
+-------------------|-----------
+int                | 4 bytes
+Node               | 8 bytes
+Node               | 8 bytes
+padding            | 4 bytes
+
+object overhead    | 16 bytes
+-------------------|----------
+extra overhead     | 8 bytes
+node -> item       | 8 bytes
+node -> next       | 8 bytes
+
+
+
+OnePointerQueue: ~40N + 40
+
+object overhead    |   16 bytes
+-------------------|-----------
+int                | 4 bytes
+Node               | 8 bytes
+Node               | 8 bytes
+padding            | 4 bytes
+
+
+object overhead    | 16 bytes
+-------------------|-----------
+extra overhead     | 8 bytes
+node --> item      | 8 bytes
+node --> next      | 8 bytes
+
+
+MinimumStack: ~48N + 40
+
+object overhead    |   16 bytes
+-------------------|-----------
+int                | 4 bytes
+Node               | 8 bytes
+Node               | 8 bytes
+stack              | 8 bytes
+padding            | 4 bytes
+
+
+object overhead    | 16 bytes
+-------------------|-----------
+extra overhead     | 8 bytes
+node --> item      | 8 bytes
+node --> next      | 8 bytes
+
+
+
+class             | memory (bytes)
+------------------|----------
+`Steque`          | ~40N + 40
+`MinimumStack`    | ~48N + 40
+`OnePointerQueue` | ~40N + 40
+
+
+
+Known bugs / limitations
+-------------------------
+
+<!--
+What bugs or limitations were troublesome?
+What bugs or limitations still remain?
+Are these bugs or limitations a problem in your implementation, algorithm, or something else?
+How do you know that you did not miss a bug?
+What additional tests did you run to ensure that your implementations are correct?
+-->
+Most of the bugs I had issues with were typos, or
+incorrect castings; however, these issues were easily
+resolved and quick to find. Another issue I had was
+taking into account edge cases. For example the first
+item pushed on or enqueued onto a stack is considered
+both the first and last item in a stack. Another example
+is creating a minimum stack to hold all of the minimum items. This
+allows for the minimum to be popped off without the issue
+of no longer having a previous minimum.
+
+Currently there are no other bugs or limitations that I
+am aware of in both my implementation or the algorithm
+itself. I ran a large series of tests in order to ensure
+that I caught every edge case and that I correctly
+implemented each stack. I ran tests such as pushing and
+enqueuing on numbers, checked the size, and then popped
+and dequeued the numbers to check if the size returned to
+zero. For the MinimumStack I added checks such as checking
+the minimum between each push and pop, as well as, checking
+if my hierarchy of minimums. Due to the copious amounts
+of tests I ran I am fairly certain I did not miss any
+bugs or limitations.
+
+<!-- ... -->
+
+
+
+Reflection
+===========
+I had help on my code from Dr. Denning, he helped me by walking through
+the implementation of minimumStack using the whiteboard. He set up a
+scenario where we pushed on the number 1, then pushed on the number 2, then
+pushed on the number 0. He demonstrated how to use compareTo() to check
+the numbers against each other, and how it would be best to create a
+stack to keep track of the minimum hierarchy because when we pop off zero, like
+in the example, we no longer have the minimum one stored to reset the minimum.
+Dr. Denning also showed me the utility peek() to look at the top item of
+the minimumStack, thereby, getting rid of my previous set up of setting
+and resetting min alongside the stack.I also relied heavily on the lecture
+slide given in class to set up my steque and onePointerQueue implementations.
+<!--
+Describe whatever help (if any) that you received.
+Don't include readings, lectures, but do include any help from people (including course staff, lab TAs, classmates, and friends) and attribute them by name.
+How did you discuss the problem with others? (ex: white-board algorithms, looking over code for bugs, looking at print out results, etc.)
+-->
+
+
+<!-- ... -->
+
+
+I did not work alongside anyone on this project.
+<!--
+Since this is an individual assignment, if you worked with a partner, assert below that the work you are turning in is your own work, and that you only did "whiteboard" work as a group.
+Give one sentence explaining what each of you contributed.
+If you used the code from the lab challenge, explain what is shared between you and your lab partner.
+-->
+
+<!-- ... -->
+
+
+Fortunately I did not encounter any serious problems while writing my code just minor syntax, and casting errors.
+I spent approximately five hours coding the assignment, one hour talking out the assignment, four hours debugging/reworking code, and
+one to two hours writing up the readme.
+<!--
+Describe any serious problems you encountered.
+How much time did you spend writing new code, debugging code, thinking about the algorithms, discussing with someone else, running tests, writing comments and documentation, etc.?
+List any other comments here.
+Feel free to provide any feedback on how much you learned from doing the assignment, and whether you enjoyed doing it.
+-->
+
+<!-- ... -->
+
+
+
+
+
+
+
+
+<!--   Feel free to modify the following to fit a theme of your choosing   -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> <!-- a sans-serif font -->
+<style>  /* A TAYLOR-INSPIRED THEME */
+    body {font-family:'Open Sans',sans-serif;}
+    .md a:link, .md a:visited {color:hsl(252,23.0%,44.3%); font-family:'Open Sans',sans-serif;}
+    .md table.table th {background-color:hsl(252,23.0%,44.3%);}
+    .md .noheader th {display:none;}
+    .md .firstcol td:first-child {white-space:pre;color:white;vertical-align:top;font-weight:bold;border-color:black;background:hsl(252,23.0%,54.3%);}
+    .md .firstcol tr:nth-child(even) td:first-child {background:hsl(252,23.0%,44.3%);}
+    .md div.tilde { margin: 5px 0 20px; }
+</style>
+
+
+<!-- ****************************** -->
+<!--    Leave the content below     -->
+<!-- ****************************** -->
+
+<!-- The script and style below are added for clarity and to workaround a bug -->
+<script>
+    // this is a hack to workaround a bug in Markdeep+Mathjax, where
+    // `&#36;`` is automatically converted to `\(`` and `\)`` too soon.
+    // the following code will replace the innerHTML of all elements
+    // with class "dollar" with a dollar sign.
+    setTimeout(function() {
+        var dollars = document.getElementsByClassName('dollar');
+        for(var i = 0; i < dollars.length; i++) {
+            dollars[i].innerHTML = '&#' + '36;'; // split to prevent conversion to $
+        }
+    }, 1000);
+</script>
+<style>
+    /* adding some styling to <code> tags (but not <pre><code> coding blocks!) */
+    :not(pre) > code {
+        background-color: rgba(0,0,0,0.05);
+        outline: 1px solid rgba(0,0,0,0.15);
+        margin-left: 0.25em;
+        margin-right: 0.25em;
+    }
+    /* fixes table of contents of medium-length document from looking weird if admonitions are behind */
+    .md div.mediumTOC { background: white; }
+    .md div.admonition { position: initial !important; }
+</style>
+
+<!--   Leave the following Markdeep formatting code, as this will format your text above to look nice in a wed browser   -->
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+<script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible");</script>

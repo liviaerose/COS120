@@ -1,0 +1,288 @@
+<meta charset="utf-8" lang="en">  <!-- this line allows UTF-8 characters in the .html file -->
+
+                    **P03_Sorting**
+
+
+<!--
+
+General
+========
+
+For each of your team's implementations, explain the following (where appropriate and applicable):
+
+- details on calling conventions, input and output data formats, limitations, bugs, and special features.
+- negative aspects of your program (limitations, known bugs)
+- positive aspects (extensions, special features)
+- describe your choice of modularization (abstractions), data structures, and algorithms
+- explain anything you did that is likely to be different from what other students may have done
+- justify any design decisions for which the rationale isn't immediately clear
+
+Feel free to modify the structure of this `readme.html` file to fit the current assignment and to fit how you wish to present your findings.
+
+
+!!! note: Math Typesetting
+    Surround your math with double dollar signs to have [MathJax](https://www.mathjax.org/) typeset it beautifully.
+    To add a tilde in math mode (using dollar signs), use the `\sim` command.
+    If an exponent has more than one character, you must surround it with curly braces.
+    In the example below, the exponent for $T$ must use curly braces, but they aren't required for $N$.
+
+    $$ \sim T^{1.2} N^2 $$
+
+    Note: Typesetting like this is optional; feel free to use plain text if you'd like.
+
+
+Submission
+-----------
+
+Use the CSE LogHistory Plug-in to create a zip file containing all your code, this `readme.html` document, and any additional files of evidence (ex: screenshots).
+If you create a zip by other means, it will include all the files under `tests` and might miss some important files (ex: `.log/history.log`).
+The former will make for a very large zip file; the latter will cause you to lose points.
+
+
+-->
+
+
+
+Author
+=============
+
+
+<!-- fill out the following table with your information -->
+<!-- Note: wrapping table in div.noheader will hide the table's header -->
+<!-- Note: wrapping table in div.firstcol will style the first column different from other columns -->
+<div class="noheader firstcol">
+    To explain the late submission, I received an extension on the project from Dr. Denning due to a family emergency.
+                  |             
+------------------|-------------
+name              | Livia Rose<!-- ... -->
+computer + OS     | MacOS High Sierra<!-- ... -->
+time to complete  | 17 hours<!-- ... -->
+partner           | None<!-- ... -->
+additional help   | Heather Bologna and Dr. Denning<!-- ... -->
+</div>
+
+
+
+
+
+
+Implementations
+===================
+
+
+Doubling Tests Implementation
+--------------------------
+I first implemented a function called time that wraps a stopwatch around the calls each of the sorts. This stopwatch time will
+then be printed in main. In main I created a for loop that begins at n=1000. Inside the for loop I call time(n) thereby
+calling all of the sorts using n. Once the for loop is complete the time is then printed. I checked to see if my implementation
+was correct by checking the time against the anticipated times for each sort. Since these times seemed similar I believe my
+implementation was correct.
+<!--
+Explain briefly how you implemented the doubling tests.
+How did you check that your implementation was correct?
+Include code listings, screenshots, diagrams, etc. if helpful.
+-->
+
+
+Linked-List Sort Implementation
+------------------------------
+I used natural bottom up merge sort processing for my linked list sorting implementation. This process we touched base on in
+class, therefore, I was able to use some of the code we worked through during lecture. First I checked to see if my list was
+empty or if there was only one item in it. If this is the case I returned out of sort. Inside sort I then created a variable to
+hold the length of comparable [] a. A new comparable[] aux is then created to hold the natural runs inside the linked list. Once
+the natural runs are found I then merged the natural runs together by calling a separate function called merge. Merge checks
+each of the nodes against each other and will redirect the pointers into sorted order. I checked this implementation by running a
+series of tests to make sure the linked list was properly sorted and the pointers were correctly pointing in sorted order.
+<!--
+Explain briefly how you implemented the linked-list sort?
+How did you check that your implementation was correct?
+Include code listings, screenshots, diagrams, etc. if helpful.
+-->
+
+
+Median of 3/5 Implementation
+-----------------------------------
+I modified the provided quick sort code to implement median of 3 and median of 5 by adding to the median function
+that checks to see if each index is the median. I was able to do this for median of 3 by setting up a comparison tree
+that checks to see if one index is greater than or less that the other indexes. These checks decided on which index is the
+median and returns the median value. For median of 5 I created a temporary array
+that holds a list of five items at a time, sorts the array and checks if the temporary array at index 2 equals each of
+the items. If the temporary array at index 2 is equal to the item being compared to that item is then returned.
+<!--
+Explain briefly how you modified the provided quick sort code to use the median of 3 and the median of 5.
+How did you check that your implementation was correct?
+Include code listings, screenshots, diagrams, etc. if helpful.
+-->
+
+
+Analysis
+===============
+
+
+Edge Cases
+--------------------
+I used the writing up for edge cases as a guide for each of the lists I created to check against possible edge cases in
+my implementations. These edge cases confirmed whether my functions were implemented correctly and were running efficiently.
+If an edge cases threw an error, I knew that I needed to check my implementation for a possible bug or a possible issue I did
+not properly cover. Due to the fact I used the writing up for edge cases as a guide for my edge cases implementation, I feel
+confident that I though of all possible edge cases. These edge cases allowed me to take into account that you can sort a list
+that has one item or I must put in reinforcement on issues such as a quick sort median of 3 can't be implemented on a list of
+two items. This issue however can be worked around by putting if else statements in place.
+<!--
+Explain briefly what you learned or confirmed with the edge cases.
+Do you think that you have thought of all possible pathological cases?
+What do these cases say about the different sorting algorithms?
+-->
+
+
+
+Runtime Analysis
+---------------------
+
+<!--
+How much time (in seconds) do the following sorting algorithms take?
+Use tilde notation.
+Briefly justify your answers and show your work.
+Do your findings agree with what is said in class?
+If not, why do you think they differ?
+
+Do not include the time required for the allocating and initializing the arrays!
+-->
+
+sorting algorithm | time (seconds)
+------------------|----------
+Bubble            | $\sim 8N$
+Insertion         | $\sim 7.5N$
+Selection         | $\sim 3.9N$
+Shellsort         | $\sim 0.5N$
+Quicksort         | $\sim 1N$
+QuickSortMedian3  | $\sim 2N$
+QuickSortMedian5  | $\sim 4N$
+
+While implementing my doubling test implementation I created a stopwatch that timed each of the sorting tests. Each of these
+tests utilized the same array of items in order to properly compare the times against each other. Because each of the algorithms
+have a calculated time each sorting system should take, I was able to compare this "fixed" calculated time against the times
+each of the tests my doubling test implementation provided me. Therefore, I was able to properly compare my sorting times
+against the times we talked about during lectures. Due to the nature that my laptop was not plugged in and that my computer is a
+different processor, I did leave room for error when comparing the two times.
+
+Known bugs / limitations
+-------------------------
+Most of the bugs I had issues with were typos, or over complicating the problem; however, these issues were easily resolved and quick to find.
+Another issue I had was tracking the use of QuickSortMedian in QuickSortMedian3 and QuickSortMedian5. Dr. Denning was able to explain this
+network in detail for me over google meets. QuickSortMedian3 and QuickSortMedian5 utilize QuickSortMedian when calling sort(a, median) inside their sort
+function. This call implements an entire network of calls inside QuickSortMedian.
+
+Currently there are no other bugs or limitations that I am aware of in both my implementation or the algorithm itself.
+I ran a large series of tests in order to ensure that I caught every edge case and that I correctly implemented each sorting algorithm.
+I used the tests specified in the write up for edge cases to guide my series of tests within each of the implementations.
+Due to the copious amounts of tests I ran I am fairly certain I did not miss any bugs or limitations.
+<!--
+What bugs or limitations were troublesome?
+What bugs or limitations still remain?
+Are these bugs or limitations a problem in your implementation, algorithm, or something else?
+How do you know that you did not miss a bug?
+What additional tests did you run to ensure that your implementations are correct?
+-->
+
+<!-- ... -->
+
+
+
+Reflection
+===========
+I had help on my code from Dr. Denning, he helped me by walking through the utilization of QuickSortMedian inside QuickSortMedian3 and QuickSortMedian5.
+Dr. Denning also help me by explaining the linked list implementation in more detail using an online drawing tool, while we video chatted over
+google meets. Dr. Denning also cleared up a question I had concerning edge cases. I was confused on whether I needed to create multiple lists or
+implement the different edge cases a different way. This was an easy fix because my previous thoughts were correct--we needed to create multiple lists each
+fulfilling an edge case. I also relied heavily on the lecture slides given in class to set up my linked list implementations and edge cases implementations. I relied
+heavily on the extra reading resources from algs4 for the set up of the doubling test implementation and the quick sort median 3 and quick sort median 5.
+
+I worked alongside Heather Bologna by talking through the lecture slides and the extra reading resources provided by algs4.
+
+Fortunately I did not encounter any serious problems while writing my code just minor syntax, and tracking problems.
+I spent approximately seven hours reading up on and deciphering the code, five hours coding the assignment, two hour talking out the assignment,
+two hours debugging/reworking code, and one hour writing up the readme.
+<!--
+Describe whatever help (if any) that you received.
+Don't include readings, lectures, but do include any help from people (including course staff, lab TAs, classmates, and friends) and attribute them by name.
+How did you discuss the problem with others? (ex: white-board algorithms, looking over code for bugs, looking at print out results, etc.)
+-->
+
+<!-- ... -->
+
+
+
+<!--
+Since this is an individual assignment, if you worked with a partner, assert below that the work you are turning in is your own work, and that you only did "whiteboard" work as a group.
+Give one sentence explaining what each of you contributed.
+If you used the code from the lab challenge, explain what is shared between you and your lab partner.
+-->
+
+<!-- ... -->
+
+
+
+<!--
+Describe any serious problems you encountered.
+How much time did you spend writing new code, debugging code, thinking about the algorithms, discussing with someone else, running tests, writing comments and documentation, etc.?
+List any other comments here.
+Feel free to provide any feedback on how much you learned from doing the assignment, and whether you enjoyed doing it.
+-->
+
+<!-- ... -->
+
+
+
+
+
+
+
+
+<!--   Feel free to modify the following to fit a theme of your choosing   -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> <!-- a sans-serif font -->
+<style>  /* A TAYLOR-INSPIRED THEME */
+    body {font-family:'Open Sans',sans-serif;}
+    .md a:link, .md a:visited {color:hsl(252,23.0%,44.3%); font-family:'Open Sans',sans-serif;}
+    .md table.table th {background-color:hsl(252,23.0%,44.3%);}
+    .md .noheader th {display:none;}
+    .md .firstcol td:first-child {white-space:pre;color:white;vertical-align:top;font-weight:bold;border-color:black;background:hsl(252,23.0%,54.3%);}
+    .md .firstcol tr:nth-child(even) td:first-child {background:hsl(252,23.0%,44.3%);}
+    .md div.tilde { margin: 5px 0 20px; }
+</style>
+
+
+<!-- ****************************** -->
+<!--    Leave the content below     -->
+<!-- ****************************** -->
+
+<!-- The script and style below are added for clarity and to workaround a bug -->
+<script>
+    // this is a hack to workaround a bug in Markdeep+Mathjax, where
+    // `&#36;`` is automatically converted to `\(`` and `\)`` too soon.
+    // the following code will replace the innerHTML of all elements
+    // with class "dollar" with a dollar sign.
+    setTimeout(function() {
+        var dollars = document.getElementsByClassName('dollar');
+        for(var i = 0; i < dollars.length; i++) {
+            dollars[i].innerHTML = '&#' + '36;'; // split to prevent conversion to $
+        }
+    }, 1000);
+</script>
+<style>
+    /* adding some styling to <code> tags (but not <pre><code> coding blocks!) */
+    :not(pre) > code {
+        background-color: rgba(0,0,0,0.05);
+        outline: 1px solid rgba(0,0,0,0.15);
+        margin-left: 0.25em;
+        margin-right: 0.25em;
+    }
+    /* fixes table of contents of medium-length document from looking weird if admonitions are behind */
+    .md div.mediumTOC { background: white; }
+    .md div.admonition { position: initial !important; }
+</style>
+
+<!--   Leave the following Markdeep formatting code, as this will format your text above to look nice in a wed browser   -->
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+<script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible");</script>

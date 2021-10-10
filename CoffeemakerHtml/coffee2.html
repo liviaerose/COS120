@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+                background-color: #755535;
+            }
+            .coffeemaker {
+                width: 300px;
+                height: 280px;
+                position: absolute;
+                top: calc(50% - 140px);
+                left: calc(50% - 150px);
+                transform: scale(1.75);
+            }
+            .head {
+                width: 100%;
+                height: 80px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: gainsboro;
+                border-radius: 10px;
+                z-index: -10;
+            }
+            #color1{
+                height:50px;
+                width:50px;
+                background-color: #352115;
+                position: absolute;
+                top:120px;
+                left:115px;
+                margin: -100px 0 0 -100px;
+                border-radius:10%;
+                filter:drop-shadow(2px 2px 0px darkgray);
+            }
+            #color1:hover{
+                -webkit-box-shadow: inset 0px 0px 10px black;
+                -moz-box-shadow: inset 0px 0px 10px black;
+                box-shadow: inset 0px 0px 10px black;
+                left: 116px;
+                filter:none;
+            }
+            #color1:hover ~ .light1{
+                background-color: darkred;
+            }
+            #color2{
+                height:50px;
+                width:50px;
+                background-color: #755535;
+                position: absolute;
+                top:120px;
+                left:170px;
+                margin: -100px 0 0 -100px;
+                border-radius:10%;
+                filter:drop-shadow(2px 2px 0px darkgray);
+            }
+            #color2:hover{
+                -webkit-box-shadow: inset 0px 0px 10px black;
+                -moz-box-shadow: inset 0px 0px 10px black;
+                box-shadow: inset 0px 0px 10px black;
+                left: 171px;
+                filter:none;
+            }
+            #color2:hover ~ .light2{
+                background-color: darkred;
+            }
+            #color3{
+                height:50px;
+                width:50px;
+                background-color: #A78662;
+                position: absolute;
+                top:120px;
+                left:225px;
+                margin: -100px 0 0 -100px;
+                border-radius:10%;
+                filter:drop-shadow(2px 2px 0px darkgray);
+            }
+            #color3:hover{
+                -webkit-box-shadow: inset 0px 0px 10px black;
+                -moz-box-shadow: inset 0px 0px 10px black;
+                box-shadow: inset 0px 0px 10px black;
+                left:226px;
+                filter:none;
+            }
+            #color3:hover ~ .light3{
+                background-color: darkred;
+            }
+            #color4{
+                height:50px;
+                width:50px;
+                background-color: #DFC1A1;
+                position: absolute;
+                top:120px;
+                left:280px;
+                margin: -100px 0 0 -100px;
+                border-radius:10%;
+                filter:drop-shadow(2px 2px 0px darkgray);
+            }
+            #color4:hover{
+               -webkit-box-shadow: inset 0px 0px 10px black;
+                -moz-box-shadow: inset 0px 0px 10px black;
+                box-shadow: inset 0px 0px 10px black;
+                left:281px;
+                filter:none;
+            }
+            #color4:hover ~ .light4{
+                background-color: darkred;
+            }
+            #color5{
+                height:50px;
+                width:50px;
+                background-color: #FBE9D1;
+                position: absolute;
+                top:120px;
+                left:335px;
+                margin: -100px 0 0 -100px;
+                border-radius:10%;
+                filter:drop-shadow(2px 2px 0px darkgray);
+            }
+            #color5:hover{
+                -webkit-box-shadow: inset 0px 0px 10px black;
+                -moz-box-shadow: inset 0px 0px 10px black;
+                box-shadow: inset 0px 0px 10px black;
+                left:336px;
+                filter:none;
+            }
+            #color5:hover ~ .light5{
+                background-color: darkred;
+            }
+            .light1{
+                height:10px;
+                width:30px;
+                border-radius: 50%;
+                background-color: gray;
+                position: absolute;
+                top:105px;
+                left:125px;
+                margin: -100px 0 0 -100px;
+            }
+            .light2{
+                height:10px;
+                width:30px;
+                border-radius: 50%;
+                background-color: gray;
+                position: absolute;
+                top:105px;
+                left:180px;
+                margin: -100px 0 0 -100px;
+                animation: blink 10s;
+            }
+            .light3{
+                height:10px;
+                width:30px;
+                border-radius: 50%;
+                background-color: gray;
+                position: absolute;
+                top:105px;
+                left:235px;
+                margin: -100px 0 0 -100px;
+            }
+            .light4{
+                height:10px;
+                width:30px;
+                border-radius: 50%;
+                background-color: gray;
+                position: absolute;
+                top:105px;
+                left:290px;
+                margin: -100px 0 0 -100px;
+            }
+            .light5{
+                height:10px;
+                width:30px;
+                border-radius: 50%;
+                background-color: gray;
+                position: absolute;
+                top:105px;
+                left:345px;
+                margin: -100px 0 0 -100px;
+            }
+            
+             @keyframes blink{
+                0%{background-color:darkred;}
+                10%{background-color:darkred;}
+                20%{background-color:gray;}
+                30%{background-color:darkred;}
+                40%{background-color:darkred;}
+                50%{background-color:gray;}
+                60%{background-color:darkred;}
+                70%{background-color:darkred;}
+                80%{background-color:gray;}
+                90%{background-color:darkred;}
+                100%{background-color:gray;}
+                
+            }
+            
+            .mid {
+                width: 90%;
+                height: 160px;
+                position: absolute;
+                top: 80px;
+                left: calc(50% - 45%);
+                background-color: darkgrey;
+                z-index:-20;
+}
+            .mid:before {
+                content: "";
+                width: 90%;
+                height: 100px;
+                background-color: gray;
+                position: absolute;
+                bottom: 0;
+                left: calc(50% - 45%);
+                border-radius: 20px 20px 0 0;
+            }
+            .exit {
+                width: 60px;
+                height: 20px;
+                position: absolute;
+                top: 80px;
+                left: calc(50% - 30px);
+                background-color: black;
+                z-index:20;
+            }
+            .exit::before {
+                content: "";
+                width: 50px;
+                height: 20px;
+                border-radius: 0 0 50% 50%;
+                position: absolute;
+                top:20px;
+                left: calc(50% - 25px);
+                background-color: black;
+            }
+            .exit::after {
+                content: "";
+                width: 10px;
+                height: 10px;
+                position: absolute;
+                top:40px;
+                left: calc(50% - 5px);
+                background-color: black;
+            }
+            .liquid{
+                width:8px;
+                height:90px;
+                border-radius: 25%;
+                position: absolute;
+                top: -10px;
+                left: calc(50% - 4px);
+                background-color: #755535;
+                z-index: -15;
+                transition: linear;
+                animation: pour 8s;
+            }
+            
+            @keyframes pour{
+                8%{transform:scaleX(-100%) translateY(10px);}
+                13%{transform:scaleX(-100%) translateY(130px);}
+                50%{transform:scaleX(-100%) translateY(130px);}
+                90%{transform:scaleX(-25%) translateY(130px);}
+                100%{transform:scaleX(0%) translateY(65px);}
+            }
+            
+             .smoke{
+                width: 8px;
+                height: 20px;
+                opacity:0;
+                position: absolute;  
+                border-radius: 5px;
+                top: 90px;
+                left: calc(50% - 10px);
+                background-color: whitesmoke;
+                z-index: -14;
+                animation:steam 3s 4s forwards linear;
+                animation-iteration-count: 3;
+            }
+            
+            #smoke1{
+                top: 85px;
+                left: calc(50% + 12px);
+                animation:steam 4s 7s forwards linear;
+                animation-iteration-count: 3;
+            }
+            #smoke2{
+                top: 95px;
+                left: calc(50% + 26px);
+                animation:steam 3s 5s forwards linear;
+                animation-iteration-count: 3;
+            }
+            #smoke3{
+                top: 100px;
+                left: calc(50% + 18px);
+                animation:steam 2s 1s forwards linear;
+                animation-iteration-count: 3;
+            }
+            #smoke4{
+                top: 90px;
+                left: calc(50% - 15px);
+                animation:steam 4s 6s forwards linear;
+                animation-iteration-count: 3;
+            }
+            #smoke5{
+                top: 80px;
+                left: calc(50% - 23px);
+                animation:steam 3s 4s forwards linear;
+                animation-iteration-count: 3;
+            }
+            #smoke6{
+                top: 105px;
+                left: calc(50% - 30px);
+                animation:steam 2s 2s forwards linear;
+                animation-iteration-count: 3;
+            }
+            
+            
+             @keyframes steam{
+                0%{opacity:0;} 
+                40%{top:85px;; opacity:0.5;}
+                80%{top:75px; opacity:0.3;}
+                100%{opacity:0; top:65px;}
+                
+            }
+            
+            .arm {
+                width: 70px;
+                height: 20px;
+                position: absolute;
+                top: 100px;
+                right: 40px;
+                background-color: black;
+            }
+            .arm::before {
+                content: "";
+                width: 15px;
+                height: 5px;
+                position: absolute;
+                top: 7px;
+                left: -15px;
+                background-color: gainsboro;
+            }
+            .cup {
+                width: 80px;
+                height: 47px;
+                position: absolute;
+                top:200px;
+                left: calc(50% - 40px);
+                background-color: whitesmoke;
+                border-radius: 0 0 70px 70px / 0 0 110px 110px;
+                z-index:10;
+            }
+            .cup::after {
+                content: "";
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                top: 6px;
+                right: -13px;
+                border: 5px solid whitesmoke;
+                border-radius: 50%;
+            }
+            .foot {
+                width: 95%;
+                height: 15px;
+                position: absolute;
+                bottom: 25px;
+                left: calc(50% - 47.5%);
+                background-color: gainsboro;
+                border-radius: 10px;
+            }
+            .foot::after {
+                content: "";
+                width: 106%;
+                height: 26px;
+                position: absolute;
+                bottom: -25px;
+                left: -8px;
+                background-color: gray;
+            }
+            
+        </style>
+    </head>
+    
+    
+<body>
+    <div class="coffeemaker" id="whole">
+        <div class="head"></div>
+        <a href="coffee1.html" id="color1"></a>
+        <a href="coffee2.html" id="color2"></a>
+        <a href="coffee3.html" id="color3"></a>
+        <a href="coffee4.html" id="color4"></a>
+        <a href="coffee5.html" id="color5"></a>
+        <div class="light1"></div>
+        <div class="light2"></div>
+        <div class="light3"></div>
+        <div class="light4"></div>
+        <div class="light5"></div>
+        <div class="mid"></div>
+        <div class="spout">
+            <div class="exit"></div>
+            <div class="liquid"></div>
+            <div class="smoke">
+                <div class="smoke" id="smoke1"></div>
+                <div class="smoke" id="smoke2"></div>
+                <div class="smoke" id="smoke3"></div>
+                <div class="smoke" id="smoke4"></div>
+                <div class="smoke" id="smoke5"></div>
+                <div class="smoke" id="smoke6"></div>
+            </div>
+        </div>
+        <div class="arm"></div>
+        <div class="cup"></div>        
+        <div class="foot"></div>
+    </div>
+    
+</body>
+</html>

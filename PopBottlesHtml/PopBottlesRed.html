@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <title>Soda Bottles </title>
+        <style>
+            
+            body{
+                background-color: #A80401;
+            }
+            
+            #nav-wrap{
+	           width:600px;
+	           margin:auto;
+	           margin-top:300px;
+	        }
+            
+            .bottle{
+                width: 100px;
+	            height: 150px;
+	            display: block;
+	            float: left;
+	            margin: auto;
+                transition: all 1s;
+            }
+            a{
+                width: 100px;
+	            height: 150px;
+	            display: block;
+	            float: left;
+	            margin: auto;
+            }
+
+            #bottle1{
+                background-color: #007DC1;
+                position: fixed;
+                top:50%;
+                left:35%;
+                margin: -100px 0 0 -100px;
+                outline-style: solid;
+                outline-color: black;
+            }
+            
+            #hover1{
+                background-color: #A80401;
+                position: fixed;
+                top:50%;
+                left:35%;
+                margin: -100px 0 0 -100px;
+                z-index: -100
+            }
+            
+            #hover1:hover > #bottle1{
+                animation: wiggle 2s infinite linear;
+                transform-origin: center;
+            }
+            
+            #bottle2{
+                background-color: #00DB3B;
+                position: fixed;
+                top:50%;
+                left:45%;
+                margin: -100px 0 0 -100px;
+                outline-style: solid;
+                outline-color: black;
+            }
+            
+            #hover2{
+                background-color: #A80401;
+                position: fixed;
+                top:50%;
+                left:45%;
+                margin: -100px 0 0 -100px;
+                z-index: -100
+            }
+            
+            #hover2:hover > #bottle2{
+                animation: wiggle 2s infinite linear;
+                transform-origin: center;
+            }
+            
+            #bottle3{
+                background-color: #F5D800;  
+                position: fixed;
+                top:50%;
+                left:55%;
+                margin: -100px 0 0 -100px;
+                outline-style: solid;
+                outline-color: black;
+            }
+            
+             #hover3{
+                background-color: #A80401;
+                position: fixed;
+                top:50%;
+                left:55%;
+                margin: -100px 0 0 -100px;
+                z-index: -100
+            }
+            
+            #hover3:hover > #bottle3{
+                animation: wiggle 2s infinite linear;
+                transform-origin: center;
+            }
+
+            #bottle4{
+                background-color: #F59100;
+                position: fixed;
+                top:50%;
+                left:65%;
+                margin: -100px 0 0 -100px;
+                outline-style: solid;
+                outline-color: black;
+            }
+            
+             #hover4{
+                background-color: #A80401;
+                position: fixed;
+                top:50%;
+                left:65%;
+                margin: -100px 0 0 -100px;
+                z-index: -100
+            }
+            
+            #hover4:hover > #bottle4{
+                animation: wiggle 2s infinite linear;
+                transform-origin: center;
+            }
+            
+            #bottle5{
+                background-color: #A80401;
+                position: fixed;
+                top:50%;
+                left:75%;
+                margin: -100px 0 0 -100px;
+                outline-style: solid;
+                outline-color: black;
+            }
+            
+             #hover5{
+                background-color: #A80401;
+                position: fixed;
+                top:50%;
+                left:75%;
+                margin: -100px 0 0 -100px;
+                z-index: -100
+            }
+            
+            #hover5:hover > #bottle5{
+                animation: wiggle 2s infinite linear;
+                transform-origin: center;
+            }
+            
+            @keyframes wiggle{
+                0%{transform:rotate(0deg);}
+                25%{transform:rotate(-30deg);}
+                75%{transform:rotate(30deg);}
+                100%{transform:rotate(0deg);}
+            }
+            
+        </style>
+    </head>
+    
+    <body>
+        <div id="nav-wrap">
+            <a href="PopBottlesBlue.html" id="hover1">
+                <div class="bottle" id="bottle1"></div>
+            </a>
+            <a href="PopBottlesGreen.html" id="hover2">
+                <div class="bottle" id="bottle2"></div>
+            </a>
+            <a href="PopBottlesYellow.html" id="hover3">
+                <div class="bottle" id="bottle3"></div>
+            </a>
+            <a href="PopBottlesOrange.html" id="hover4">
+                <div class="bottle" id="bottle4"></div>
+            </a>
+            <a href="PopBottlesRed.html" id="hover5">
+                <div class="bottle" id="bottle5"></div>
+            </a>
+        </div>
+    </body>
+</html>

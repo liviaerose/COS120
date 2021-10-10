@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/liviaerose/Desktop/COS331/lrose/HTTPServer/listener/listener.c
+stdio.h
+-
+stdlib.h
+-
+sys/socket.h
+-
+netdb.h
+-
+string.h
+-
+errno.h
+-
+unistd.h
+-
+ctype.h
+-
+fcntl.h
+-
+time.h
+-
+

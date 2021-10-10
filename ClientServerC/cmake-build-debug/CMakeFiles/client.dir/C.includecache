@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/liviaerose/Desktop/COS331/lrose-mgetgen/src/client.c
+stdio.h
+-
+unistd.h
+-
+errno.h
+-
+string.h
+-
+sys/socket.h
+-
+netdb.h
+-
+
